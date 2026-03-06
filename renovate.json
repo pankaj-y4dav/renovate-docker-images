@@ -42,8 +42,6 @@
     {
       "matchDatasources": ["docker"],
       "matchPackageNames": ["public.ecr.aws/datadog/agent"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "versioning": "semver",
       "allowedVersions": "/^7\\./",
       "groupName": "Datadog Agent",
       "labels": ["dependencies", "security"]
@@ -51,8 +49,6 @@
     {
       "matchDatasources": ["docker"],
       "matchPackageNames": ["public.ecr.aws/aws-observability/aws-for-fluent-bit"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "versioning": "loose",
       "groupName": "AWS Fluent Bit",
       "labels": ["dependencies", "security"]
     },

@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  # Test: AWS ECR Public Registry
+  datadog-ecr:
+    image: public.ecr.aws/datadog/agent:7.50.0
+    environment:
+      - DD_API_KEY=${DD_API_KEY}
+    
+  fluent-bit-ecr:
+    image: public.ecr.aws/aws-observability/aws-for-fluent-bit:2.31.12
+    
+  # Test: Docker Hub (implicit)
+  datadog-dockerhub:
+    image: datadog/agent:7.50.0
+    environment:
+      - DD_API_KEY=${DD_API_KEY}
+    
+  fluent-bit-dockerhub:
+    image: amazon/aws-for-fluent-bit:2.31.12
+    
+  # Test: Docker Hub (explicit)
+  datadog-dockerhub-explicit:
+    image: docker.io/datadog/agent:7.50.0
+    environment:
+      - DD_API_KEY=${DD_API_KEY}
+    
+  fluent-bit-dockerhub-explicit:
+    image: docker.io/amazon/aws-for-fluent-bit:2.31.12
+    
+  # Test: Docker Hub (fully qualified)
+  datadog-dockerhub-fqdn:
+    image: index.docker.io/datadog/agent:7.49.0
+    environment:
+      - DD_API_KEY=${DD_API_KEY}
+  
+  # Test: HashiCorp Mirror
+  datadog-hashicorp:
+    image: docker.mirror.hashicorp.services/datadog/agent:7.50.0
+    environment:
+      - DD_API_KEY=${DD_API_KEY}
+    
+  fluent-bit-hashicorp:
+    image: docker.mirror.hashicorp.services/amazon/aws-for-fluent-bit:2.31.12

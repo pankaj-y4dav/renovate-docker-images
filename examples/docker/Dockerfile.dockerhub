@@ -1,0 +1,9 @@
+# Test: Docker Hub (implicit)
+FROM datadog/agent:7.50.0 as datadog
+
+FROM amazon/aws-for-fluent-bit:2.31.12 as fluent-bit
+
+# Example application
+FROM alpine:latest
+COPY --from=datadog /opt/datadog-agent /opt/datadog-agent
+COPY --from=fluent-bit /fluent-bit /fluent-bit

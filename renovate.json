@@ -34,7 +34,7 @@
         "(?<depName>public\\.ecr\\.aws/aws-observability/aws-for-fluent-bit|docker\\.io/amazon/aws-for-fluent-bit|index\\.docker\\.io/amazon/aws-for-fluent-bit|amazon/aws-for-fluent-bit|docker\\.mirror\\.hashicorp\\.services/amazon/aws-for-fluent-bit):(?<currentValue>[A-Za-z0-9._-]+)"
       ],
       "datasourceTemplate": "docker",
-      "versioningTemplate": "loose"
+      "versioningTemplate": "semver"
     }
   ],
   "packageRules": [
@@ -67,7 +67,6 @@
         "amazon/aws-for-fluent-bit",
         "docker.mirror.hashicorp.services/amazon/aws-for-fluent-bit"
       ],
-      "allowedVersions": "!/\\.\\d{8}$/",
       "groupName": "AWS Fluent Bit",
       "labels": [
         "dependencies",

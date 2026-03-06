@@ -4,16 +4,17 @@
     "config:recommended"
   ],
   "dependencyDashboard": true,
+  "includePaths": ["**/*"],
   "customManagers": [
     {
       "customType": "regex",
       "description": "Datadog Agent image references",
       "managerFilePatterns": [
-        "/^.*\\.ya?ml$/",
-        "/^.*\\.tf$/",
-        "/^.*\\.json$/",
-        "/^.*\\.sh$/",
-        "/Dockerfile.*/"
+        "^.*\\.ya?ml$",
+        "^.*\\.tf$",
+        "^.*\\.json$",
+        "^.*\\.sh$",
+        "Dockerfile.*"
       ],
       "matchStrings": [
         "(?<depName>public\\.ecr\\.aws/datadog/agent):(?<currentValue>[A-Za-z0-9._-]+)"
@@ -25,11 +26,11 @@
       "customType": "regex",
       "description": "AWS Fluent Bit image references",
       "managerFilePatterns": [
-        "/^.*\\.ya?ml$/",
-        "/^.*\\.tf$/",
-        "/^.*\\.json$/",
-        "/^.*\\.sh$/",
-        "/Dockerfile.*/"
+        "^.*\\.ya?ml$",
+        "^.*\\.tf$",
+        "^.*\\.json$",
+        "^.*\\.sh$",
+        "Dockerfile.*"
       ],
       "matchStrings": [
         "(?<depName>public\\.ecr\\.aws/aws-observability/aws-for-fluent-bit):(?<currentValue>[A-Za-z0-9._-]+)"

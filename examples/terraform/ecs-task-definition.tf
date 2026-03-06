@@ -48,7 +48,7 @@ resource "aws_ecs_task_definition" "fluent_bit" {
   container_definitions = jsonencode([
     {
       name      = "fluent-bit"
-      image     = "public.ecr.aws/aws-observability/aws-for-fluent-bit:2.31.12"
+      image     = "public.ecr.aws/aws-observability/aws-for-fluent-bit:2.34.3"
       essential = true
 
       environment = [

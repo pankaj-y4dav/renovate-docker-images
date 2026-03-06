@@ -1,0 +1,82 @@
+{
+  "family": "monitoring-stack",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "containerDefinitions": [
+    {
+      "name": "datadog-agent",
+      "image": "public.ecr.aws/datadog/agent:7.50.0",
+      "essential": true,
+      "environment": [
+        {
+          "name": "DD_API_KEY",
+          "value": "${DD_API_KEY}"
+        },
+        {
+          "name": "DD_SITE",
+          "value": "datadoghq.com"
+        },
+        {
+          "name": "ECS_FARGATE",
+          "value": "true"
+        },
+        {
+          "name": "DD_APM_ENABLED",
+          "value": "true"
+        },
+        {
+          "name": "DD_LOGS_ENABLED",
+          "value": "true"
+        }
+      ],
+      "portMappings": [
+        {
+          "containerPort": 8126,
+          "protocol": "tcp"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/datadog-agent",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "datadog"
+        }
+      },
+      "healthCheck": {
+        "command": ["CMD-SHELL", "agent health"],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 60
+      }
+    },
+    {
+      "name": "fluent-bit",
+      "image": "public.ecr.aws/aws-observability/aws-for-fluent-bit:2.31.12",
+      "essential": false,
+      "environment": [
+        {
+          "name": "AWS_REGION",
+          "value": "us-east-1"
+        }
+      ],
+      "firelensConfiguration": {
+        "type": "fluentbit",
+        "options": {
+          "enable-ecs-log-metadata": "true"
+        }
+      },
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/fluent-bit",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "firelens"
+        }
+      }
+    }
+  ]
+}

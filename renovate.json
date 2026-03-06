@@ -1,0 +1,70 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "dependencyDashboard": true,
+
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Datadog Agent image references",
+      "fileMatch": [
+        "^.*\\.ya?ml$",
+        "^.*\\.tf$",
+        "^.*\\.json$",
+        "^.*\\.sh$",
+        "Dockerfile.*"
+      ],
+      "matchStrings": [
+        "(?<depName>public\\.ecr\\.aws/datadog/agent):(?<currentValue>[A-Za-z0-9._-]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "description": "AWS Fluent Bit image references",
+      "fileMatch": [
+        "^.*\\.ya?ml$",
+        "^.*\\.tf$",
+        "^.*\\.json$",
+        "^.*\\.sh$",
+        "Dockerfile.*"
+      ],
+      "matchStrings": [
+        "(?<depName>public\\.ecr\\.aws/aws-observability/aws-for-fluent-bit):(?<currentValue>[A-Za-z0-9._-]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "loose"
+    }
+  ],
+
+  "packageRules": [
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["public.ecr.aws/datadog/agent"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "versioning": "semver",
+      "allowedVersions": "/^7\\./",
+      "groupName": "Datadog Agent",
+      "labels": ["dependencies", "security"]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["public.ecr.aws/aws-observability/aws-for-fluent-bit"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "versioning": "loose",
+      "groupName": "AWS Fluent Bit",
+      "labels": ["dependencies", "security"]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    }
+  ],
+
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": ["security", "vulnerability"]
+  }
+}

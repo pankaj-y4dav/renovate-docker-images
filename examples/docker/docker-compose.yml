@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  datadog-agent:
+    image: public.ecr.aws/datadog/agent:7.50.0
+    container_name: datadog-agent
+    restart: unless-stopped
+    environment:
+      - DD_API_KEY=${DD_API_KEY}
+      - DD_SITE=datadoghq.com
+      - DD_LOGS_ENABLED=true
+      - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true
+      - DD_APM_ENABLED=true
+      - DD_APM_NON_LOCAL_TRAFFIC=true
+      - DD_DOGSTATSD_NON_LOCAL_TRAFFIC=true
+      - DD_PROCESS_AGENT_ENABLED=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /proc/:/host/proc/:ro
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
+      - /opt/datadog-agent/run:/opt/datadog-agent/run:rw
+    ports:
+      - "8126:8126"  # APM
+      - "8125:8125/udp"  # DogStatsD
+    networks:
+      - monitoring
+
+  fluent-bit:
+    image: public.ecr.aws/aws-observability/aws-for-fluent-bit:2.31.12
+    container_name: fluent-bit
+    restart: unless-stopped
+    environment:
+      - AWS_REGION=us-east-1
+      - AWS_DEFAULT_REGION=us-east-1
+    volumes:
+      - ./fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf:ro
+      - /var/log:/var/log:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+    ports:
+      - "2020:2020"
+    networks:
+      - logging
+    depends_on:
+      - datadog-agent
+
+  app:
+    image: nginx:latest
+    container_name: sample-app
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    networks:
+      - monitoring
+      - logging
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: app.nginx
+
+networks:
+  monitoring:
+    driver: bridge
+  logging:
+    driver: bridge

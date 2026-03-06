@@ -1,10 +1,10 @@
 # Test: Docker Hub (explicit docker.io)
-FROM docker.io/datadog/agent:7.50.0 as datadog
+FROM docker.io/datadog/agent:7.76.2 as datadog
 
 FROM docker.io/amazon/aws-for-fluent-bit:2.31.12 as fluent-bit
 
 # Test: Fully qualified Docker Hub
-FROM index.docker.io/datadog/agent:7.49.0 as datadog-fqdn
+FROM index.docker.io/datadog/agent:7.76.2 as datadog-fqdn
 
 # Example application
 FROM alpine:latest

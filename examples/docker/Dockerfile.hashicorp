@@ -1,5 +1,5 @@
 # Test: HashiCorp Docker Mirror
-FROM docker.mirror.hashicorp.services/datadog/agent:7.50.0 as datadog
+FROM docker.mirror.hashicorp.services/datadog/agent:7.76.2 as datadog
 
 FROM docker.mirror.hashicorp.services/amazon/aws-for-fluent-bit:2.31.12 as fluent-bit
 

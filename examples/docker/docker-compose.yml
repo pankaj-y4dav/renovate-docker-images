@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   datadog-agent:
-    image: public.ecr.aws/datadog/agent:7.50.0
+    image: public.ecr.aws/datadog/agent:7.76.2
     container_name: datadog-agent
     restart: unless-stopped
     environment:

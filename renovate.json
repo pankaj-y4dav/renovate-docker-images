@@ -1,18 +1,19 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
+  "extends": [
+    "config:recommended"
+  ],
   "dependencyDashboard": true,
-
   "customManagers": [
     {
       "customType": "regex",
       "description": "Datadog Agent image references",
-      "fileMatch": [
-        "^.*\\.ya?ml$",
-        "^.*\\.tf$",
-        "^.*\\.json$",
-        "^.*\\.sh$",
-        "Dockerfile.*"
+      "managerFilePatterns": [
+        "/^.*\\.ya?ml$/",
+        "/^.*\\.tf$/",
+        "/^.*\\.json$/",
+        "/^.*\\.sh$/",
+        "/Dockerfile.*/"
       ],
       "matchStrings": [
         "(?<depName>public\\.ecr\\.aws/datadog/agent):(?<currentValue>[A-Za-z0-9._-]+)"
@@ -23,12 +24,12 @@
     {
       "customType": "regex",
       "description": "AWS Fluent Bit image references",
-      "fileMatch": [
-        "^.*\\.ya?ml$",
-        "^.*\\.tf$",
-        "^.*\\.json$",
-        "^.*\\.sh$",
-        "Dockerfile.*"
+      "managerFilePatterns": [
+        "/^.*\\.ya?ml$/",
+        "/^.*\\.tf$/",
+        "/^.*\\.json$/",
+        "/^.*\\.sh$/",
+        "/Dockerfile.*/"
       ],
       "matchStrings": [
         "(?<depName>public\\.ecr\\.aws/aws-observability/aws-for-fluent-bit):(?<currentValue>[A-Za-z0-9._-]+)"
@@ -37,30 +38,49 @@
       "versioningTemplate": "loose"
     }
   ],
-
   "packageRules": [
     {
-      "matchDatasources": ["docker"],
-      "matchPackageNames": ["public.ecr.aws/datadog/agent"],
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackageNames": [
+        "public.ecr.aws/datadog/agent"
+      ],
       "allowedVersions": "/^7\\./",
       "groupName": "Datadog Agent",
-      "labels": ["dependencies", "security"]
+      "labels": [
+        "dependencies",
+        "security"
+      ]
     },
     {
-      "matchDatasources": ["docker"],
-      "matchPackageNames": ["public.ecr.aws/aws-observability/aws-for-fluent-bit"],
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackageNames": [
+        "public.ecr.aws/aws-observability/aws-for-fluent-bit"
+      ],
       "groupName": "AWS Fluent Bit",
-      "labels": ["dependencies", "security"]
+      "labels": [
+        "dependencies",
+        "security"
+      ]
     },
     {
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["major"],
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
       "enabled": false
     }
   ],
-
   "vulnerabilityAlerts": {
     "enabled": true,
-    "labels": ["security", "vulnerability"]
+    "labels": [
+      "security",
+      "vulnerability"
+    ]
   }
 }

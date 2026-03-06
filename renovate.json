@@ -59,6 +59,7 @@
       "matchPackageNames": [
         "public.ecr.aws/aws-observability/aws-for-fluent-bit"
       ],
+      "allowedVersions": "!/\\.\\d{8}$/",
       "groupName": "AWS Fluent Bit",
       "labels": [
         "dependencies",

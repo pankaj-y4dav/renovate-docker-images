@@ -7,7 +7,7 @@ monitoring {
   datadog {
     enabled = true
     # Test: AWS ECR Public registry
-    image   = "public.ecr.aws/datadog/agent:7.50.0"
+    image   = "public.ecr.aws/datadog/agent:7.76.3"
     api_key = env("DD_API_KEY")
     
     config {
@@ -41,9 +41,9 @@ monitoring {
 
 # Test: Alternative registry configurations
 monitoring_alternatives {
-  datadog_dockerhub = "docker.io/datadog/agent:7.50.0"
-  datadog_fqdn      = "index.docker.io/datadog/agent:7.50.0"
-  datadog_mirror    = "docker.mirror.hashicorp.services/datadog/agent:7.50.0"
+  datadog_dockerhub = "docker.io/datadog/agent:7.76.3"
+  datadog_fqdn      = "index.docker.io/datadog/agent:7.76.3"
+  datadog_mirror    = "docker.mirror.hashicorp.services/datadog/agent:7.76.3"
   
   fluent_bit_dockerhub = "docker.io/amazon/aws-for-fluent-bit:2.31.12"
   fluent_bit_mirror    = "docker.mirror.hashicorp.services/amazon/aws-for-fluent-bit:2.31.12"
@@ -52,7 +52,7 @@ monitoring_alternatives {
 # Test: Service definitions using image references
 service "datadog" {
   type  = "container"
-  image = "public.ecr.aws/datadog/agent:7.50.0"
+  image = "public.ecr.aws/datadog/agent:7.76.3"
   
   environment = {
     DD_API_KEY      = var.datadog_api_key
@@ -79,7 +79,7 @@ service "fluent-bit" {
 deployment "monitoring-stack" {
   containers = {
     datadog = {
-      image = "public.ecr.aws/datadog/agent:7.50.0"
+      image = "public.ecr.aws/datadog/agent:7.76.3"
       tag   = "7.50.0"
     }
     fluent_bit = {

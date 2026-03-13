@@ -26,7 +26,7 @@ services:
       - monitoring
 
   fluent-bit:
-    image: public.ecr.aws/aws-observability/aws-for-fluent-bit:2.31.12
+    image: public.ecr.aws/aws-observability/aws-for-fluent-bit:2.34.3
     container_name: fluent-bit
     restart: unless-stopped
     environment:

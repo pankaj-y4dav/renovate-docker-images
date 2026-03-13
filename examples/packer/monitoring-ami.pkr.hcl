@@ -51,8 +51,8 @@ build {
   # Test: Pull Fluent Bit from Docker Hub
   provisioner "shell" {
     inline = [
-      "sudo docker pull amazon/aws-for-fluent-bit:2.31.12",
-      "sudo docker tag amazon/aws-for-fluent-bit:2.31.12 fluent-bit:latest"
+      "sudo docker pull amazon/aws-for-fluent-bit:2.34.3",
+      "sudo docker tag amazon/aws-for-fluent-bit:2.34.3 fluent-bit:latest"
     ]
   }
 
@@ -79,7 +79,7 @@ build {
       #!/bin/bash
       docker run -d --name fluent-bit \
         -v /var/log:/var/log:ro \
-        amazon/aws-for-fluent-bit:2.31.12 \
+        amazon/aws-for-fluent-bit:2.34.3 \
         /fluent-bit/bin/fluent-bit -c /fluent-bit/etc/fluent-bit.conf
     EOF
     destination = "/tmp/start-fluent-bit.sh"
@@ -92,7 +92,7 @@ build {
       "# docker pull docker.io/datadog/agent:7.50.0",
       "# docker pull index.docker.io/datadog/agent:7.50.0", 
       "# docker pull docker.mirror.hashicorp.services/datadog/agent:7.50.0",
-      "# docker pull docker.io/amazon/aws-for-fluent-bit:2.31.12",
+      "# docker pull docker.io/amazon/aws-for-fluent-bit:2.34.3",
       "echo 'Monitoring agents configured'"
     ]
   }

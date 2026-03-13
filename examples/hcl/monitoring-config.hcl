@@ -25,7 +25,7 @@ monitoring {
   fluent_bit {
     enabled = true
     # Test: Docker Hub registry
-    image   = "amazon/aws-for-fluent-bit:2.31.12"
+    image   = "amazon/aws-for-fluent-bit:2.34.3"
     
     config {
       log_level = "info"
@@ -45,8 +45,8 @@ monitoring_alternatives {
   datadog_fqdn      = "index.docker.io/datadog/agent:7.50.0"
   datadog_mirror    = "docker.mirror.hashicorp.services/datadog/agent:7.50.0"
   
-  fluent_bit_dockerhub = "docker.io/amazon/aws-for-fluent-bit:2.31.12"
-  fluent_bit_mirror    = "docker.mirror.hashicorp.services/amazon/aws-for-fluent-bit:2.31.12"
+  fluent_bit_dockerhub = "docker.io/amazon/aws-for-fluent-bit:2.34.3"
+  fluent_bit_mirror    = "docker.mirror.hashicorp.services/amazon/aws-for-fluent-bit:2.34.3"
 }
 
 # Test: Service definitions using image references
@@ -65,7 +65,7 @@ service "datadog" {
 
 service "fluent-bit" {
   type  = "container"
-  image = "amazon/aws-for-fluent-bit:2.31.12"
+  image = "amazon/aws-for-fluent-bit:2.34.3"
   
   volumes = [
     "/var/log:/var/log:ro",
@@ -83,7 +83,7 @@ deployment "monitoring-stack" {
       tag   = "7.50.0"
     }
     fluent_bit = {
-      image = "amazon/aws-for-fluent-bit:2.31.12"
+      image = "amazon/aws-for-fluent-bit:2.34.3"
       tag   = "2.31.12"
     }
   }

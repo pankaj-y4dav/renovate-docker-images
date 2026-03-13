@@ -9,6 +9,8 @@
         "**/*.yaml",
         "**/*.yml",
         "**/*.tf",
+        "**/*.hcl",
+        "**/*.pkr.hcl",
         "**/*.json",
         "**/*.sh",
         "**/Dockerfile*"
@@ -26,6 +28,8 @@
         "**/*.yaml",
         "**/*.yml",
         "**/*.tf",
+        "**/*.hcl",
+        "**/*.pkr.hcl",
         "**/*.json",
         "**/*.sh",
         "**/Dockerfile*"

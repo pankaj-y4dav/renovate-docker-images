@@ -12,7 +12,7 @@ packer {
 
 # Test: Build from Datadog Agent base image
 source "docker" "datadog-custom" {
-  image  = "public.ecr.aws/datadog/agent:7.50.0"
+  image  = "public.ecr.aws/datadog/agent:7.76.3"
   commit = true
   changes = [
     "LABEL version=1.0.0",
@@ -32,12 +32,12 @@ source "docker" "fluent-bit-custom" {
 
 # Test: Multiple registry variants
 source "docker" "datadog-dockerhub" {
-  image  = "docker.io/datadog/agent:7.50.0"
+  image  = "docker.io/datadog/agent:7.76.3"
   commit = true
 }
 
 source "docker" "datadog-hashicorp-mirror" {
-  image  = "docker.mirror.hashicorp.services/datadog/agent:7.50.0"
+  image  = "docker.mirror.hashicorp.services/datadog/agent:7.76.3"
   commit = true
 }
 
@@ -51,7 +51,7 @@ build {
 
   provisioner "shell" {
     inline = [
-      "echo 'Base image: public.ecr.aws/datadog/agent:7.50.0'",
+      "echo 'Base image: public.ecr.aws/datadog/agent:7.76.3'",
       "echo 'Base image: amazon/aws-for-fluent-bit:2.31.12'",
       "echo 'Customizing monitoring agent...'"
     ]

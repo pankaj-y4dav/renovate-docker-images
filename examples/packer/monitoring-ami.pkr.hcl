@@ -43,8 +43,8 @@ build {
   # Test: Pull Datadog Agent from AWS ECR Public
   provisioner "shell" {
     inline = [
-      "sudo docker pull public.ecr.aws/datadog/agent:7.50.0",
-      "sudo docker tag public.ecr.aws/datadog/agent:7.50.0 datadog/agent:latest"
+      "sudo docker pull public.ecr.aws/datadog/agent:7.77.0",
+      "sudo docker tag public.ecr.aws/datadog/agent:7.77.0 datadog/agent:latest"
     ]
   }
 
@@ -68,7 +68,7 @@ build {
         -v /var/run/docker.sock:/var/run/docker.sock:ro \
         -v /proc/:/host/proc/:ro \
         -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro \
-        datadog/agent:7.50.0
+        datadog/agent:7.77.0
     EOF
     destination = "/tmp/start-datadog.sh"
   }
@@ -89,9 +89,9 @@ build {
   provisioner "shell" {
     inline = [
       "# Alternative registries for testing:",
-      "# docker pull docker.io/datadog/agent:7.50.0",
-      "# docker pull index.docker.io/datadog/agent:7.50.0", 
-      "# docker pull docker.mirror.hashicorp.services/datadog/agent:7.50.0",
+      "# docker pull docker.io/datadog/agent:7.77.0",
+      "# docker pull index.docker.io/datadog/agent:7.77.0", 
+      "# docker pull docker.mirror.hashicorp.services/datadog/agent:7.77.0",
       "# docker pull docker.io/amazon/aws-for-fluent-bit:2.31.12",
       "echo 'Monitoring agents configured'"
     ]

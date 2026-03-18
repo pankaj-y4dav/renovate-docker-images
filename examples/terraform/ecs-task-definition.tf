@@ -8,7 +8,7 @@ resource "aws_ecs_task_definition" "datadog_agent" {
   container_definitions = jsonencode([
     {
       name      = "datadog-agent"
-      image     = "public.ecr.aws/datadog/agent:7.50.0"
+      image     = "public.ecr.aws/datadog/agent:7.77.0"
       essential = true
 
       environment = [

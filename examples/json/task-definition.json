@@ -7,7 +7,7 @@
   "containerDefinitions": [
     {
       "name": "datadog-agent",
-      "image": "public.ecr.aws/datadog/agent:7.50.0",
+      "image": "public.ecr.aws/datadog/agent:7.77.1",
       "essential": true,
       "environment": [
         {

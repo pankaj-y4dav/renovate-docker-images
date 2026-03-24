@@ -16,7 +16,7 @@ spec:
       serviceAccountName: datadog-agent
       containers:
         - name: datadog-agent
-          image: public.ecr.aws/datadog/agent:7.50.0
+          image: public.ecr.aws/datadog/agent:7.77.1
           env:
             - name: DD_API_KEY
               valueFrom:

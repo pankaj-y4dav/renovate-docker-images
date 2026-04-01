@@ -7,7 +7,7 @@ RUN npm ci --only=production
 COPY . .
 
 # Runtime stage with Datadog
-FROM public.ecr.aws/datadog/agent:7.50.0
+FROM public.ecr.aws/datadog/agent:7.77.2
 
 # Install runtime dependencies
 RUN apt-get update && \

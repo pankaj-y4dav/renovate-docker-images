@@ -3,7 +3,7 @@ version: '3.8'
 services:
   # Test: AWS ECR Public Registry
   datadog-ecr:
-    image: public.ecr.aws/datadog/agent:7.50.0
+    image: public.ecr.aws/datadog/agent:7.77.2
     environment:
       - DD_API_KEY=${DD_API_KEY}
     
@@ -12,7 +12,7 @@ services:
     
   # Test: Docker Hub (implicit)
   datadog-dockerhub:
-    image: datadog/agent:7.50.0
+    image: datadog/agent:7.77.2
     environment:
       - DD_API_KEY=${DD_API_KEY}
     
@@ -21,7 +21,7 @@ services:
     
   # Test: Docker Hub (explicit)
   datadog-dockerhub-explicit:
-    image: docker.io/datadog/agent:7.50.0
+    image: docker.io/datadog/agent:7.77.2
     environment:
       - DD_API_KEY=${DD_API_KEY}
     
@@ -30,13 +30,13 @@ services:
     
   # Test: Docker Hub (fully qualified)
   datadog-dockerhub-fqdn:
-    image: index.docker.io/datadog/agent:7.49.0
+    image: index.docker.io/datadog/agent:7.77.2
     environment:
       - DD_API_KEY=${DD_API_KEY}
   
   # Test: HashiCorp Mirror
   datadog-hashicorp:
-    image: docker.mirror.hashicorp.services/datadog/agent:7.50.0
+    image: docker.mirror.hashicorp.services/datadog/agent:7.77.2
     environment:
       - DD_API_KEY=${DD_API_KEY}
     

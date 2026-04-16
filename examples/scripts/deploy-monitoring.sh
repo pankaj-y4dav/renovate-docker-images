@@ -5,7 +5,7 @@ set -euo pipefail
 # Deploy Datadog Agent and Fluent Bit monitoring stack
 # This script demonstrates image references in shell scripts
 
-DATADOG_IMAGE="public.ecr.aws/datadog/agent:7.50.0"
+DATADOG_IMAGE="public.ecr.aws/datadog/agent:7.78.0"
 FLUENT_BIT_IMAGE="public.ecr.aws/aws-observability/aws-for-fluent-bit:2.31.12"
 
 # Configuration

@@ -1,5 +1,5 @@
 # Test: Docker Hub (implicit)
-FROM datadog/agent:7.50.0 as datadog
+FROM datadog/agent:7.78.0 as datadog
 
 FROM amazon/aws-for-fluent-bit:2.31.12 as fluent-bit
 

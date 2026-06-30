@@ -22,7 +22,7 @@ source "docker" "datadog-custom" {
 
 # Test: Build from Fluent Bit base image
 source "docker" "fluent-bit-custom" {
-  image  = "amazon/aws-for-fluent-bit:2.31.12"
+  image  = "amazon/aws-for-fluent-bit:2.34.3"
   commit = true
   changes = [
     "LABEL version=1.0.0",
@@ -52,7 +52,7 @@ build {
   provisioner "shell" {
     inline = [
       "echo 'Base image: public.ecr.aws/datadog/agent:7.50.0'",
-      "echo 'Base image: amazon/aws-for-fluent-bit:2.31.12'",
+      "echo 'Base image: amazon/aws-for-fluent-bit:2.34.3'",
       "echo 'Customizing monitoring agent...'"
     ]
   }

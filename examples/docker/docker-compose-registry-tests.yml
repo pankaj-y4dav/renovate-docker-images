@@ -8,7 +8,7 @@ services:
       - DD_API_KEY=${DD_API_KEY}
     
   fluent-bit-ecr:
-    image: public.ecr.aws/aws-observability/aws-for-fluent-bit:2.31.12
+    image: public.ecr.aws/aws-observability/aws-for-fluent-bit:2.34.3
     
   # Test: Docker Hub (implicit)
   datadog-dockerhub:
@@ -17,7 +17,7 @@ services:
       - DD_API_KEY=${DD_API_KEY}
     
   fluent-bit-dockerhub:
-    image: amazon/aws-for-fluent-bit:2.31.12
+    image: amazon/aws-for-fluent-bit:2.34.3
     
   # Test: Docker Hub (explicit)
   datadog-dockerhub-explicit:
@@ -26,7 +26,7 @@ services:
       - DD_API_KEY=${DD_API_KEY}
     
   fluent-bit-dockerhub-explicit:
-    image: docker.io/amazon/aws-for-fluent-bit:2.31.12
+    image: docker.io/amazon/aws-for-fluent-bit:2.34.3
     
   # Test: Docker Hub (fully qualified)
   datadog-dockerhub-fqdn:
@@ -41,4 +41,4 @@ services:
       - DD_API_KEY=${DD_API_KEY}
     
   fluent-bit-hashicorp:
-    image: docker.mirror.hashicorp.services/amazon/aws-for-fluent-bit:2.31.12
+    image: docker.mirror.hashicorp.services/amazon/aws-for-fluent-bit:2.34.3

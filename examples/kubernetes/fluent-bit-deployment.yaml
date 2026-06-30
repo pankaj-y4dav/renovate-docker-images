@@ -17,7 +17,7 @@ spec:
       serviceAccountName: fluent-bit
       containers:
         - name: fluent-bit
-          image: public.ecr.aws/aws-observability/aws-for-fluent-bit:2.31.12
+          image: public.ecr.aws/aws-observability/aws-for-fluent-bit:2.34.3
           imagePullPolicy: Always
           env:
             - name: AWS_REGION
